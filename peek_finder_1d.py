@@ -1,5 +1,7 @@
 #Program to find the peak of a 1D array
 
+from timeit import default_timer as timer #timeit.default_timer provides the best clock available on user's platform and version of Python automatically
+
 def peakOf(lst, left, right):
 	
 	if(len(lst) == None):
@@ -15,7 +17,9 @@ def peakOf(lst, left, right):
 		return lst[mid]
 
 
-elements = [1, 2, 3, 4, 5, 6, 7, 8]
+elements = [1, 2, 9, 4, 5, 6, 7, 8]
+
+start = timer() #record start time
 
 if not elements: #check for empty list
 	peak = None
@@ -24,5 +28,9 @@ elif (len(elements) == 1): #peak of a single item is the item itself
 else:
 	peak = peakOf(elements, 0, len(elements)-1)
 
+end = timer() #record end time
+
 message = "The peak of the list is: {0}"
 print(message.format(peak))
+
+print("\n\nExecution time = {}".format(end-start))
